@@ -3,6 +3,7 @@ package io.swagger.petstore.stepsDefinitions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -16,6 +17,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -51,7 +53,7 @@ public class UserDefinedStepsDefination {
 
     @Given("^I create a new (store order|single user|multiple user|pet) with url \"([^\"]*)\" and (.*) variable$")
     public void performCreateOperation(String creationType, String url, String variableName, DataTable table) throws Throwable {
-        Response response;
+//        Response response;
         //String requestBody;
         this.requestBody = "";
         List<Map<String, String>> createStoreMap = table.transpose().asMaps();
@@ -107,6 +109,9 @@ public class UserDefinedStepsDefination {
         }
 //        response = postOpsWithBodyParams(url, this.requestBody);
         this.response = requestSpec.contentType(ContentType.JSON).body(this.requestBody).post(url);
+        log.info("****************************************************************************");
+        log.info("***Response "+this.response +"***");
+        log.info("****************************************************************************");
         System.out.println(this.response.asPrettyString());
     }
 
@@ -248,7 +253,7 @@ public class UserDefinedStepsDefination {
         } else {
             url = url + variableName;
             this.response = requestSpec.get(url);
-            log.info("Response --> " + this.response);
+            log.info("Response --> " + this.response.asPrettyString());
         }
     }
 
@@ -286,6 +291,20 @@ public class UserDefinedStepsDefination {
         Assert.assertTrue(this.response.getStatusCode() == code, "Expected status code: " + code + " Actual: " + this.response.getStatusCode());
 
     }
-
+    @When("I perform post operation for {string} with {string} to upload the file {string} addtional {string} data")
+    public void i_perform_post_operation_for_to_upload_the_file_addtional_data(String url, String varName, String location, String metaData) {
+        response = null;
+        url = url+varName+"/uploadImage";
+        log.info("******URL for uploadImage "+url+" *************************");
+        File image = new File(location);
+        response = requestSpec.contentType(ContentType.JSON)
+                .contentType(ContentType.MULTIPART)
+                .multiPart("additionalMetadata",metaData)
+                .multiPart(image)
+                .post("pet/4/uploadImage");
+        log.info("*********************************************");
+        log.info("********************"+response.asPrettyString()+"*************************");
+        log.info("*********************************************");
+    }
 
 }

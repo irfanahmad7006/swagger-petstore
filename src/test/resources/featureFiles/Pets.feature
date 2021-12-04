@@ -13,8 +13,8 @@ Feature: Verify all Pet Operations
       | tags_id       | GenerateNumber |
       | tags_name     | GenerateString |
       | status        | available      |
-    Then I perform get operation to fetch pet details for url "/pet/" with petId variable
-    And I verify response details
+    When I perform get operation to fetch pet details for url "/pet/" with petId variable
+    Then I verify response details
 
   Scenario: Verify Put Pet operation
     Given I create a new pet with url "/pet" and petId variable
@@ -72,9 +72,15 @@ Feature: Verify all Pet Operations
   Scenario: Verify Get Pet details by status
     When I perform get operation to fetch pet details for url "/pet/findByStatus" with status value available
     Then I verify response with status code 200
-   
-     
- 
- 
+
+  Scenario Outline: Verify Upload Image operation
+    When I perform post operation for "<url>" with "<petID>" to upload the file "<fileLocation>" addtional "<metaData>" data
+    Then I verify response with status code 200
+    Examples:
+      | petID | url   | fileLocation                        | metaData   |
+      | 1     | /pet/ | src/test/resources/pictures/cat.png | testString |
+
+
+
  #http://localhost:8080/api/v3/user/login?username=test6&password=pasd
  

@@ -7,7 +7,8 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = {"src\\test\\resources\\featureFiles"},
         glue = {"io.swagger.petstore.stepsDefinitions"}, //specify hooks location if not present in the same package as step defs
- //       plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+//        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "pretty", "html:testReport/cucumber.html"},
         monochrome = true,
         publish = true
 )
