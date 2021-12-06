@@ -81,7 +81,7 @@ Proposed Test Cases & it's location:
 	|		|_Verify Delete User operation.
 	|		|_Verify Put User operation
 
-* The test cases are in "src/test/resources/featureFiles" directory each feature file is related to each resource endpoint.
+* The test cases are in "src/test/resources/featureFiles" directory, each feature file is related to each resource endpoint.
 * Each feature file contains multiple scenarios for the given resource endpoint as per the above-given structure.
 
 Execution from CMD
