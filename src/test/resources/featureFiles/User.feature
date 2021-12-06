@@ -66,9 +66,6 @@ Feature: Verify all User operations
       | phone      | 1234567890               |
       | userStatus | 1                        |
 
-
-
-
   Scenario: Verify Delete User operation.
     Given I create a new single user with url "/user" and userName variable
       | id         | 9909                          |
@@ -105,6 +102,4 @@ Feature: Verify all User operations
       | password   | true                      |
       | phone      | 1234578                   |
       | userStatus | 1                         |
- 
- #http://localhost:8080/api/v3/user/login?username=test6&password=pasd
  

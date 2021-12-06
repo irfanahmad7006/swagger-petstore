@@ -18,12 +18,11 @@ import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.*;
 
 import static io.restassured.RestAssured.given;
 
-public class UserDefinedStepsDefination {
+public class UserDefinedStepsDefinition {
     private ConfigFileReader configReader = new ConfigFileReader();
     private RequestSpecification requestSpec = given().baseUri(configReader.property("uri"));
     private Response response;
@@ -110,7 +109,7 @@ public class UserDefinedStepsDefination {
 //        response = postOpsWithBodyParams(url, this.requestBody);
         this.response = requestSpec.contentType(ContentType.JSON).body(this.requestBody).post(url);
         log.info("****************************************************************************");
-        log.info("***Response "+this.response +"***");
+        log.info("***Response "+this.response.asPrettyString() +"***");
         log.info("****************************************************************************");
         System.out.println(this.response.asPrettyString());
     }

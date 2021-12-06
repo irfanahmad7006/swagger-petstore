@@ -51,7 +51,7 @@ Feature: Verify all Pet Operations
     When I perform get operation to fetch pet details for url "/pet/" with petId value 1500
     Then I verify response has "Pet not found" with status code 404
 
-  Scenario: Verify updating Pet details with formdata
+  Scenario: Verify updating Pet details with form data
     Given I create a new pet with url "/pet" and petId variable
       | id            | GenerateNumber |
       | name          | TestName3      |
