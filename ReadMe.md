@@ -48,8 +48,12 @@ Writing a test
 * You can start out by looking at `featuresFiles/User.feature`. You can extend this feature or make your own features using some of the predefined steps that come with cucumber.
 * You can use the existing step for new scenarios.
 
-Proposed Test Cases:
+Proposed Test Cases & it's location:
 --------------
+* The test cases are in "src/test/resources/featureFiles" directory each feature file is related to each resource endpoint.
+* Each feature file contains multiple scenarios for the given resource endpoint as per the below-given structure.
+
+
 	Resource_EndPoint-Name
 	|
 	|_Pet.feature
