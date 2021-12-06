@@ -50,9 +50,6 @@ Writing a test
 
 Proposed Test Cases & it's location:
 --------------
-* The test cases are in "src/test/resources/featureFiles" directory each feature file is related to each resource endpoint.
-* Each feature file contains multiple scenarios for the given resource endpoint as per the below-given structure.
-
 
 	Resource_EndPoint-Name
 	|
@@ -83,6 +80,9 @@ Proposed Test Cases & it's location:
 	|		|_Verify CreateList User operation
 	|		|_Verify Delete User operation.
 	|		|_Verify Put User operation
+
+* The test cases are in "src/test/resources/featureFiles" directory each feature file is related to each resource endpoint.
+* Each feature file contains multiple scenarios for the given resource endpoint as per the above-given structure.
 
 Execution from CMD
 -----------------
